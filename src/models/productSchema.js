@@ -4,31 +4,24 @@ const { Schema } = mongoose;
 
 
 
-const userSchema = new Schema(
+const ProductSchema = new Schema(
     {
         id: Schema.Types.ObjectId,
         name: {
             type: String,
             required: true,
         },
-        email: {
-            type: String,
-            required: true,
+        price: {
+             type: String,
         },
-        password: {
+        Amount: {
             type: String,
+       }
         },
-        tel: {
-            type: String,
-        },
-        age: {
-            type: String,
-        }
-    },
     {
         timestamps: true,
     }
 );
 
 export default mongoose.models.User ||
-    mongoose.model("User", userSchema);
+    mongoose.model("Product", userSchema);
