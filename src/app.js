@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 dotenv.config(); // Carrega variáveis de ambiente do arquivo .env para process.env
 
 // Importa o controlador de usuários definido em um arquivo separado
+import productsController from "./controllers/productController.js";
 import userController from "./controllers/userController.js";
 
 
@@ -32,7 +33,7 @@ app.get("/testdb", async (req, res) => {
 
 // Usa o controlador de usuários para gerenciar rotas que começam com "/user"
 app.use("/user", userController); // Redireciona requisições para "/user" para o controlador de usuários
-
+app.use("/product", productsController);
 // Define a porta para o servidor a partir das variáveis de ambiente
 const PORT = process.env.PORT; // Obtém a porta do arquivo .env
 const ALTERNATE_PORT = process.env.ALTERNATE_PORT; // Obtém a porta alternativa do arquivo .env

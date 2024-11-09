@@ -1,52 +1,41 @@
 import databaseConnection from '../database/databse.js';
-import Products from '../models/userSchema.js';
+import Product from '../models/productSchema.js';
 
 
-export const listProducts = async () => {
+export const listproduct = async () => {
     await databaseConnection();
-    const Products = await Products.find();
-    return Products;
+    const product = await product.find();
+    return product;
 };
 
 
-export const createProducts = async (Products) => {
+export const createProduct = async (product) => {
     await databaseConnection();
 
-    const hashedPassword = bcrypt.hashSync(Products.password, 10);
-    Products.password = hashedPassword;
-
+   
     // Criar o usuário no banco de dados
-    const newProducts = await Products.create(Products);
-    return newProducts;
+    const newproduct = await Product.create(product);
+    return newproduct;
 };
 
 
-export const updateProducts = async (ProductsId, updatedProductsData) => {
+export const updateproduct = async (productId, updatedproductData) => {
     await databaseConnection();
 
     // Verificar se a nova senha foi fornecida
-    if (updatedProductsData.password) {
+    if (updatedproductData.password) {
         // Criptografar a nova senha usando bcrypt
-        updatedProductsData.password = bcrypt.hashSync(updatedProductsData.password, 10);
+        updatedProductData.password = bcrypt.hashSync(updatedproductData.password, 10);
     }
-
-    // Verificar se o Email foi atualizado e se já existe um usuário com o mesmo email
-    if (updatedUserData.email) {
-        const existingUserWithemail = await Products.findOne({ email: updatedProductsData.email });
-        if (existingUserWithemail && existingUserWithemail._id.toString() !== ProductsId) {
-            throw new Error("Este email já está cadastrado.");
-        }
-    }
-
     // Atualizar o usuário no banco de dados pelo ID
-    const updatedUser = await User.findByIdAndUpdate(ProductsId, updatedUserData, { new: true });
-    return updatedProducts;
+    const updatedproduct = awaitProductfindByIdAndUpdate(productId, updatedproductData, { new: true });
+    return updatedproduct;
 };
 
 
-export const deleteUser = async (userId) => {
+export const deleteproduct = async (productId) => {
     await databaseConnection();
     // Excluir o usuário do banco de dados pelo ID
-    await User.findByIdAndDelete(userId);
+    await productsfindByIdAndDelete(productId);
 };
 

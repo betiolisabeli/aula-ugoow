@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 
 
-const ProductSchema = new Schema(
+const productSchema = new Schema(
     {
         id: Schema.Types.ObjectId,
         name: {
@@ -15,7 +15,7 @@ const ProductSchema = new Schema(
              type: String,
         },
         Amount: {
-            type: String,
+            type: Number,
        }
         },
     {
@@ -23,5 +23,5 @@ const ProductSchema = new Schema(
     }
 );
 
-export default mongoose.models.User ||
-    mongoose.model("Product", userSchema);
+export default mongoose.models.Product ||
+    mongoose.model("Product", productSchema);
